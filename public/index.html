@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentiment Analysis</title>
+    <!-- Font CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Outfit&family=M+PLUS+1+Code&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Event Feedback Application</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .feedback {
+      transition: all 0.3s;
+      background-size: cover;
+      min-height: 100vh;
+    }
+
+    .feedback.active {
+      filter: blur(8px);
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container .form {
+      margin-top: 10%;
+      background: #f1f5f3;
+      padding: 1em 2.5em 1.7em 2.5em;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .form > div {
+      font-family: "Open Sans", sans-serif;
+      margin-top: 8%;
+    }
+
+    textarea {
+      font-family: "Open Sans", sans-serif;
+      size: 35px;
+      padding: 0.8em;
+      border: none;
+      outline: none;
+      background: rgb(204, 233, 243);
+      border: 2px solid black;
+      resize: none;
+    }
+
+    button {
+      padding: 0.7em;
+      cursor: pointer;
+      outline: none;
+      font-family: "Open Sans", sans-serif;
+      background: #000;
+      border: 1px solid #222;
+      color: #f1f5f3;
+    }
+
+    .results {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999999;
+
+      transition: all 0.5s;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .results.active {
+      opacity: 1;
+      pointer-events: visible;
+    }
+
+    .results .result-box {
+      background: #f1f5f3;
+      padding: 2em 4em;
+    }
+
+    .result-box > div {
+      display: flex;
+      justify-content: center;
+
+      margin-top: 15%;
+    }
+
+    .sentiment p {
+      font-family: "M PLUS 1 Code", sans-serif;
+    }
+
+    .close-button button {
+      width: 100%;
+      margin-top: 20%;
+      background: rgb(240, 55, 92);
+    }
+    .Welcome {
+      color: rgb(3, 1, 20);
+      background: rgb(226, 201, 59);
+
+      border: 1px solid #222;
+      border-radius: 15px;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+    .emoji {
+      size: 35px;
+    }
+  </style>
+  <body>
+    <!-- Toast Box -->
+    <div class="results">
+      <div class="result-box">
+        <div class="emoji"></div>
+        <div class="sentiment"></div>
+        <div class="close-button">
+          <button class="close">CLOSE</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="feedback">
+      <div class="container">
+        <div class="form">
+          <h1 class="Welcome">Welcome to Sentiment Analyzer</h1>
+          <div class="title">
+            <h2>Please type your comment</h2>
+          </div>
+          <div>
+            <textarea
+              cols="75"
+              rows="5"
+              id="feedbacktext"
+              placeholder="Write..."
+            >
+            </textarea>
+          </div>
+          <div>
+            <button id="submit">Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="main.js"></script>
+</html>
